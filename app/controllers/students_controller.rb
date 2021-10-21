@@ -22,6 +22,12 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.all
+    if paramas[:query]
+      @students = Student.all.filter{|s| s.name == params[:query]}
+    else
+      @students = Student.all
+    end
+
   end
 
   def student_params
